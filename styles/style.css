@@ -41,6 +41,19 @@ html {
   font-size: 40px;
   text-align: center;
   color: var(--dark-color);
+  span {
+    position: relative;
+      &::after {
+      content: '';
+      display: block;
+      border: 2px solid #000;
+      width: 75px;
+      height: 0px;
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+    }
+  }
 }
 
 .promo {
@@ -61,7 +74,7 @@ html {
   font-weight: 100;
   font-size: 32px;
   color: var(--light-color);
-  opacity: 30%;
+  opacity: 0.7;
   text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25), 0 4px 4px 0 rgba(0, 0, 0, 0.25), 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 .btn {
@@ -74,22 +87,37 @@ html {
   font-weight: 100;
   font-size: 16px;
   color: var(--light-color);
-  opacity: 30%;
+  opacity: 0.7;
   border: solid 1px  var(--light-color);
   line-height: normal;
+  transition: all .3s ease-out;
+  &:hover {
+    opacity: 1;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  }
 }
 .promo__address {
   margin-top: 100px;
   font-weight: 100;
   font-size: 16px;
   color: var(--light-color);
-  opacity: 30%;
-
+  opacity: 0.7;
+  position: absolute;
   address {
     font-style: normal;
   }
   a {
     color: inherit;
+  }
+  &::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 49px;
+    background: url('../icons/Arrow.svg') center center / cover no-repeat;
+    position: absolute;
+    top: -17px;
+    left: -45px;
   }
 }
 .keywords {
@@ -144,6 +172,27 @@ html {
       font-weight: 400;
       font-size: 16px;
       color: var(--dark-color);
+      position: relative;
+      &:first-child::before {
+        content: '';
+        display: block;
+        width: 15px;
+        height: 15px;
+        background: url('../icons/Camera.svg') center center / cover no-repeat;
+        position: absolute;
+        top: 2px;
+        left: -30px;
+      }
+      &:nth-child(3)::before {
+        content: '';
+        display: block;
+        width: 15px;
+        height: 15px;
+        background: url('../icons/Edit.svg') center center / cover no-repeat;
+        position: absolute;
+        top: 2px;
+        left: -30px;
+      }
     }
   }
 }
@@ -168,7 +217,7 @@ html {
   background: #fff, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2);
 }
 .works__wrapper {
-  padding-top: 53px;
+  padding-top: 50px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, auto) 1.5fr;
@@ -184,9 +233,10 @@ html {
   background: #fff, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2);
 }
 .inspiration__wrapper {
-  margin-top: 53px;
+  margin-top: 50px;
   display: grid;
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   img {
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.25);
@@ -194,26 +244,10 @@ html {
     height: 100%;
     object-fit: cover;
   }
-}
-#man {
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-}
-#horses {
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
-}
-#bridge {
-  grid-row: 1 / 2;
-  grid-column: 3 / 4;
-}
+ }
 #tenement {
   grid-row: 1 / 3;
   grid-column: 4 / 5;
-}
-#cat {
-  grid-row: 2 / 3;
-  grid-column: 1 / 2;
 }
 #sky {
   grid-row: 2 / 3;
@@ -224,12 +258,53 @@ html {
   background: #fff, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2);
 }
 .customers__wrapper {
-  padding: 53px 0 100px;
+  padding: 50px 0 100px;
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
   img {
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.25);
-    width: 333px;
+    width: calc( (100% - 90px) / 4);
     object-fit: cover;
   }
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 88px var(--footer-padding-horizontal);
+  background-color: #000;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--light-color);
+}
+.footer__social {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  li {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--light-color);
+    a {
+      width: 100%;
+      height: 100%;
+          display: flex;
+    justify-content: center;
+    align-items: center;
+      img {
+        display: block;
+        width: 22px;
+        height: 22px;
+      }
+    }
+  }
+}
+.footer__addr {
+  font-style: normal;
+}
+.footer__tel {
+  text-decoration: none;
+  color: var(--light-color);
 }
